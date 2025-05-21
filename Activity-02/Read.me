@@ -1,0 +1,14 @@
+# Activity-02: Cowrie Log Analysis
+
+This script analyzes SSH honeypot logs from Cowrie using various tasks.
+
+---
+
+## ✅ Tasks Implemented
+
+### 1. `--task failed-logins`
+Parses failed login attempts and displays a count of source IPs, filtered by a minimum count.
+
+Run:
+```bash
+python analyze_log.py cowrie-tiny.log --task failed-logins --min-count 1
