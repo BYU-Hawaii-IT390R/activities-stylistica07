@@ -1,0 +1,39 @@
+# 🛠 Windows Admin Toolkit
+
+A Python-based admin toolkit for Windows system analysis and automation. Designed for system triage and audit tasks using built-in tools, registry access, and `pywin32`.
+
+## ✅ Prerequisites
+
+Run the following in **PowerShell as Administrator**:
+
+```powershell
+pip install pywin32 colorama
+
+Then verify:
+python -c "import win32evtlog, colorama; print('✔ ok')"
+
+ Available Tasks
+Use the --task flag to run one of the following tools:
+
+Task Flag	Description
+win-events	View failed/successful login events from Security logs
+win-pkgs	List all installed software with optional CSV export
+win-services	Check and optionally restart Windows services
+win-startup ✅	🔍 NEW: Show startup programs from registry (HKCU\\...\\Run)
+win-firewall ✅	🔥 NEW: List inbound firewall rules allowing 0.0.0.0/0 traffic
+
+🧪 Usage Examples
+🔐 Failed logons (last 12 hours, 3+ attempts)
+python analyze_windows.py --task win-events --hours 12 --min-count 3
+
+Installed software audit (export to CSV)
+python analyze_windows.py --task win-pkgs --csv pkgs.csv
+
+🔧 Ensure critical services are running
+python analyze_windows.py --task win-services --watch Spooler wuauserv --fix
+
+ List startup programs (from registry)
+ python analyze_windows.py --task win-startup
+
+🧱 Show risky inbound firewall rules
+python analyze_windows.py --task win-firewall
