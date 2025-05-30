@@ -1,12 +1,13 @@
 $VBoxManage = "C:\Program Files\Oracle\VirtualBox\VBoxManage.exe"
 $vm   = "IT390R-Win10"
-$iso = "C:\ISOFiles\en-us_windows_10_consumer_editions_version_22h2_x64_dvd_8da72ab3.iso"
+$iso = "C:\ISOFiles\en-us_windows_10_consumer_editions_version_22h2_x64_dvd_8da72ab3.iso.iso"
 $ans  = "$PSScriptRoot\answer.iso"
 $disk = "$env:TEMP\Win10-$env:USERNAME.vdi"
 
 # 1  Clean up older run
+& $VBoxManage controlvm $vm poweroff 2>$null
 & $VBoxManage unregistervm $vm --delete 2>$null
-Remove-Item $disk -Force -ea 0
+Remove-Item $disk -Force -ErrorAction SilentlyContinue
 
 # 2  Create fresh VM
 & $VBoxManage createvm --name $vm --ostype Windows10_64 --register

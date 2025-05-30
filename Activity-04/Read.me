@@ -1,0 +1,14 @@
+# Activity 04 – Automated Build for Windows 10 VM
+
+## Summary
+This activity helped me understand how to automate the Windows 10 installation process using PowerShell, VirtualBox, and an `Autounattend.xml` answer file. I also learned how to generate a small ISO with the answer file and use it to run a fully unattended VM setup.
+
+## Files Included
+- `Autounattend.xml` – Contains the unattended setup instructions
+- `answer-iso.ps1` – Script to generate a small ISO with the answer file
+- `build-vm.ps1` – Pipeline script to build and start the VM
+- `vm-info.txt` – Machine-readable VirtualBox VM info
+- `snapshot.png` – Screenshot showing the VM powered off
+
+## Outcome
+The automated VM build completed successfully. The system shut down automatically after installation, confirming that the answer file was used properly.
